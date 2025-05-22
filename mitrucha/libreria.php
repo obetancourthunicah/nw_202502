@@ -25,7 +25,7 @@ function obtenerDePersistencia($key, &$store)
 
 function saveToDisk(&$store)
 {
-    $fileToSave = fopen("truchaStore.json", "a");
+    $fileToSave = fopen("truchaStore.json", "w");
     fwrite($fileToSave, json_encode($store, JSON_PRETTY_PRINT));
     fclose($fileToSave);
 }
@@ -69,7 +69,3 @@ function iniciarCatalogo(&$store)
     ];
     agregarAPersistencia("inventario", $arrInventario, $store, false);
 }
-
-iniciarCatalogo($truchaStore);
-loadFromDisk($truchaStore);
-echo '<pre>' . json_encode($truchaStore, JSON_PRETTY_PRINT) . '</pre>';

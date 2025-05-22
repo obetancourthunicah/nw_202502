@@ -10,7 +10,7 @@
             "codigo": "P002",
             "descripcion": "Platanos",
             "precio": 12,
-            "stock": 200
+            "stock": 100
         },
         {
             "codigo": "P003",
@@ -23,6 +23,22 @@
             "descripcion": "Frijoles Fritos Naturas 12oz",
             "precio": 35,
             "stock": 100
+        }
+    ],
+    "ordenes": [
+        {
+            "codigo": "1747881315",
+            "nombreCliente": "Orlando Betancourth",
+            "productos": [],
+            "total": 0,
+            "estado": "Abierto"
+        },
+        {
+            "codigo": "1747881340",
+            "nombreCliente": "Orlando Betancourth",
+            "productos": [],
+            "total": 0,
+            "estado": "Abierto"
         }
     ]
 }
