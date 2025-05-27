@@ -1,0 +1,31 @@
+
+section {
+    display: flex;
+    padding: 1rem;
+    gap:1rem;
+    margin: 0.5rem;
+    border: 1px solid #333;
+    box-shadow: 3px 3px 5px #000;
+    border-radius: 9px;
+}
+.productos{
+    flex:1
+}
+.productos table {
+    width:100%;
+}
+
+.productos table tbody tr:nth-child(2n){
+    background-color: #ccc;
+}
+.orden{
+    border-left: 1px solid #333;
+    padding-left:0.5rem;
+    padding-right: 0.5rem;
+}
+.center {
+    text-align: center;
+}
+.right {
+    text-align: right;
+}

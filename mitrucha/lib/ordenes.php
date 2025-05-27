@@ -85,9 +85,3 @@ function agregarProductoAOrden($codigo, $cantidad, $numOrden, &$store)
 }
 
 function finalizarOrden($numOrden, &$store) {}
-
-
-iniciarCatalogo($truchaStore);
-loadFromDisk($truchaStore);
-crearOrden("Orlando Betancourth", $truchaStore);
-echo '<pre>' . json_encode($truchaStore, JSON_PRETTY_PRINT) . '</pre>';
