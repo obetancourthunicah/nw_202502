@@ -6,6 +6,8 @@ include_once
 require
 require_once
 */
+session_start();
+
 require_once "libreria.php";
 
 function crearOrden($nombre, &$store)
@@ -21,6 +23,7 @@ function crearOrden($nombre, &$store)
     ];
     $ordenes[] = $orden;
     guardarOrdenesAPersistencia($ordenes, $store);
+    return $orden;
 }
 
 function obtenerOrdenesDePersistencia(&$store)
@@ -57,22 +60,6 @@ function actualizarOrden($updOrden, &$store)
     guardarOrdenesAPersistencia($newOrdenes, $store);
 }
 
-function obtenerInventario(&$store)
-{
-    return obtenerDePersistencia("inventario", $store);
-}
-
-function obtenerProductoDeInventario($cod, &$store)
-{
-    $productos = obtenerInventario($store);
-    foreach ($productos as $producto) {
-        if ($producto["codigo"] === $cod) {
-            return $producto;
-        }
-    }
-    return null;
-}
-
 function agregarProductoAOrden($codigo, $cantidad, $numOrden, &$store)
 {
     $producto = obtenerProductoDeInventario($codigo, $store);
@@ -82,6 +69,19 @@ function agregarProductoAOrden($codigo, $cantidad, $numOrden, &$store)
     $orden["productos"][] = $producto;
     $orden["total"] += $producto["subtotal"];
     actualizarOrden($orden, $store);
+}
+
+function obtenerNumOrdenActiva()
+{
+    if (isset($_SESSION["ordenActiva"])) {
+        return $_SESSION["ordenActiva"];
+    }
+    return null;
+}
+
+function setNumOrdenActiva($numOrden)
+{
+    $_SESSION["ordenActiva"] = $numOrden;
 }
 
 function finalizarOrden($numOrden, &$store) {}

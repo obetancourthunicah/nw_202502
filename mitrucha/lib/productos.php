@@ -30,7 +30,7 @@ function iniciarCatalogo()
 }
 
 
-function obtenerCatalogo(&$store)
+function obtenerInventario(&$store)
 {
     $catalogo = obtenerDePersistencia("inventario", $store);
     if ($catalogo === null) {
@@ -38,4 +38,15 @@ function obtenerCatalogo(&$store)
         agregarAPersistencia("inventario", $catalogo, $store);
     }
     return $catalogo;
+}
+
+function obtenerProductoDeInventario($cod, &$store)
+{
+    $productos = obtenerInventario($store);
+    foreach ($productos as $producto) {
+        if ($producto["codigo"] === $cod) {
+            return $producto;
+        }
+    }
+    return null;
 }

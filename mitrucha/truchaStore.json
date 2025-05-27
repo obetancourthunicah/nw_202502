@@ -27,17 +27,27 @@
     ],
     "ordenes": [
         {
-            "codigo": "1747881315",
-            "nombreCliente": "Orlando Betancourth",
-            "productos": [],
-            "total": 0,
-            "estado": "Abierto"
-        },
-        {
-            "codigo": "1747881340",
-            "nombreCliente": "Orlando Betancourth",
-            "productos": [],
-            "total": 0,
+            "codigo": "1748313951",
+            "nombreCliente": "Orlando",
+            "productos": [
+                {
+                    "codigo": "P002",
+                    "descripcion": "Platanos",
+                    "precio": 12,
+                    "stock": 100,
+                    "cantidad": 1,
+                    "subtotal": 12
+                },
+                {
+                    "codigo": "P002",
+                    "descripcion": "Platanos",
+                    "precio": 12,
+                    "stock": 100,
+                    "cantidad": 1,
+                    "subtotal": 12
+                }
+            ],
+            "total": 24,
             "estado": "Abierto"
         }
     ]
