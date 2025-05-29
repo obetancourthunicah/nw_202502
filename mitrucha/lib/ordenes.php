@@ -62,12 +62,56 @@ function actualizarOrden($updOrden, &$store)
 
 function agregarProductoAOrden($codigo, $cantidad, $numOrden, &$store)
 {
-    $producto = obtenerProductoDeInventario($codigo, $store);
-    $producto["cantidad"] = $cantidad;
-    $producto["subtotal"] = $cantidad * $producto["precio"];
     $orden = obtenerOrdenPorCodigo($numOrden, $store);
-    $orden["productos"][] = $producto;
-    $orden["total"] += $producto["subtotal"];
+    $isInOrder = false;
+    $newProductos = [];
+    foreach ($orden["productos"] as $prodInOrden) {
+        if ($codigo === $prodInOrden["codigo"]) {
+            $producto = $prodInOrden;
+            $producto["cantidad"] += $cantidad;
+            $producto["subtotal"] = $producto["cantidad"] * $producto["precio"];
+            $newProductos[] = $producto;
+            $isInOrder = true;
+        } else {
+            $newProductos[] = $prodInOrden;
+        }
+    }
+    if (!$isInOrder) {
+        $producto = obtenerProductoDeInventario($codigo, $store);
+        $producto["cantidad"] = $cantidad;
+        $producto["subtotal"] = $producto["cantidad"] * $producto["precio"];
+        $orden["productos"][] = $producto;
+    } else {
+        $orden["productos"] = $newProductos;
+    }
+    $orden["total"] = 0;
+    foreach ($orden["productos"] as $prodInOrden) {
+        $orden["total"] += $prodInOrden["subtotal"];
+    }
+    actualizarOrden($orden, $store);
+}
+
+function quitarProductoAOrden($codigo, $cantidad, $numOrden, &$store)
+{
+    $orden = obtenerOrdenPorCodigo($numOrden, $store);
+    $newProductos = [];
+    foreach ($orden["productos"] as $prodInOrden) {
+        if ($codigo === $prodInOrden["codigo"]) {
+            $producto = $prodInOrden;
+            $producto["cantidad"] -= $cantidad;
+            $producto["subtotal"] = $producto["cantidad"] * $producto["precio"];
+            if ($producto["cantidad"] != 0) {
+                $newProductos[] = $producto;
+            }
+        } else {
+            $newProductos[] = $prodInOrden;
+        }
+    }
+    $orden["productos"] = $newProductos;
+    $orden["total"] = 0;
+    foreach ($orden["productos"] as $prodInOrden) {
+        $orden["total"] += $prodInOrden["subtotal"];
+    }
     actualizarOrden($orden, $store);
 }
 
@@ -84,4 +128,28 @@ function setNumOrdenActiva($numOrden)
     $_SESSION["ordenActiva"] = $numOrden;
 }
 
-function finalizarOrden($numOrden, &$store) {}
+function ventaFallidaOrden($numOrden, &$store)
+{
+    $orden = obtenerOrdenPorCodigo($numOrden, $store);
+    $orden["estado"] = "Cancelado";
+    actualizarOrden($orden, $store);
+    setNumOrdenActiva(null);
+}
+function finalizarOrden($numOrden, &$store)
+{
+    $orden = obtenerOrdenPorCodigo($numOrden, $store);
+    $orden["estado"] = "Finalizado";
+    foreach ($orden["productos"] as $prodInOrder) {
+        $producto = obtenerProductoDeInventario($prodInOrder["codigo"], $store);
+        $producto["stock"] -= $prodInOrder["cantidad"];
+        actualizarProducto($producto, $store);
+    }
+    actualizarOrden($orden, $store);
+    setNumOrdenActiva(null);
+}
+function postearOrden($numOrden, &$store)
+{
+    $orden = obtenerOrdenPorCodigo($numOrden, $store);
+    $orden["estado"] = "Posteado";
+    actualizarOrden($orden, $store);
+}

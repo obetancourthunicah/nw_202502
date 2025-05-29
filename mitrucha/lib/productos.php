@@ -50,3 +50,17 @@ function obtenerProductoDeInventario($cod, &$store)
     }
     return null;
 }
+
+function actualizarProducto($producto, &$store)
+{
+    $productos = obtenerInventario($store);
+    $newProductos = [];
+    foreach ($productos as $prod) {
+        if ($prod["codigo"] === $producto["codigo"]) {
+            $newProductos[] = $producto;
+        } else {
+            $newProductos[] = $prod;
+        }
+    }
+    agregarAPersistencia("inventario", $newProductos, $store);
+}

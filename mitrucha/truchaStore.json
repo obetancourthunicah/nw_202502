@@ -4,25 +4,25 @@
             "codigo": "P001",
             "descripcion": "Huevos",
             "precio": 3,
-            "stock": 150
+            "stock": 147
         },
         {
             "codigo": "P002",
             "descripcion": "Platanos",
             "precio": 12,
-            "stock": 100
+            "stock": 98
         },
         {
             "codigo": "P003",
             "descripcion": "Coca Cola 2 Lts",
             "precio": 54,
-            "stock": 20
+            "stock": 19
         },
         {
             "codigo": "P004",
             "descripcion": "Frijoles Fritos Naturas 12oz",
             "precio": 35,
-            "stock": 100
+            "stock": 99
         }
     ],
     "ordenes": [
@@ -35,8 +35,72 @@
                     "descripcion": "Platanos",
                     "precio": 12,
                     "stock": 100,
+                    "cantidad": 4,
+                    "subtotal": 48
+                },
+                {
+                    "codigo": "P004",
+                    "descripcion": "Frijoles Fritos Naturas 12oz",
+                    "precio": 35,
+                    "stock": 100,
                     "cantidad": 1,
-                    "subtotal": 12
+                    "subtotal": 35
+                },
+                {
+                    "codigo": "P001",
+                    "descripcion": "Huevos",
+                    "precio": 3,
+                    "stock": 150,
+                    "cantidad": 1,
+                    "subtotal": 3
+                },
+                {
+                    "codigo": "P003",
+                    "descripcion": "Coca Cola 2 Lts",
+                    "precio": 54,
+                    "stock": 20,
+                    "cantidad": 1,
+                    "subtotal": 54
+                }
+            ],
+            "total": 140,
+            "estado": "Cancelado"
+        },
+        {
+            "codigo": "1748400462",
+            "nombreCliente": "Fulano",
+            "productos": [
+                {
+                    "codigo": "P001",
+                    "descripcion": "Huevos",
+                    "precio": 3,
+                    "stock": 150,
+                    "cantidad": 1,
+                    "subtotal": 3
+                },
+                {
+                    "codigo": "P003",
+                    "descripcion": "Coca Cola 2 Lts",
+                    "precio": 54,
+                    "stock": 20,
+                    "cantidad": 1,
+                    "subtotal": 54
+                }
+            ],
+            "total": 57,
+            "estado": "Finalizado"
+        },
+        {
+            "codigo": "1748486021",
+            "nombreCliente": "Menganito de Tal",
+            "productos": [
+                {
+                    "codigo": "P001",
+                    "descripcion": "Huevos",
+                    "precio": 3,
+                    "stock": 150,
+                    "cantidad": 1,
+                    "subtotal": 3
                 },
                 {
                     "codigo": "P002",
@@ -45,10 +109,58 @@
                     "stock": 100,
                     "cantidad": 1,
                     "subtotal": 12
+                },
+                {
+                    "codigo": "P003",
+                    "descripcion": "Coca Cola 2 Lts",
+                    "precio": 54,
+                    "stock": 20,
+                    "cantidad": 1,
+                    "subtotal": 54
+                },
+                {
+                    "codigo": "P004",
+                    "descripcion": "Frijoles Fritos Naturas 12oz",
+                    "precio": 35,
+                    "stock": 100,
+                    "cantidad": 1,
+                    "subtotal": 35
                 }
             ],
-            "total": 24,
-            "estado": "Abierto"
+            "total": 104,
+            "estado": "Cancelado"
+        },
+        {
+            "codigo": "1748486551",
+            "nombreCliente": "Sutano de Tal",
+            "productos": [
+                {
+                    "codigo": "P004",
+                    "descripcion": "Frijoles Fritos Naturas 12oz",
+                    "precio": 35,
+                    "stock": 100,
+                    "cantidad": 1,
+                    "subtotal": 35
+                },
+                {
+                    "codigo": "P002",
+                    "descripcion": "Platanos",
+                    "precio": 12,
+                    "stock": 100,
+                    "cantidad": 2,
+                    "subtotal": 24
+                },
+                {
+                    "codigo": "P001",
+                    "descripcion": "Huevos",
+                    "precio": 3,
+                    "stock": 149,
+                    "cantidad": 2,
+                    "subtotal": 6
+                }
+            ],
+            "total": 65,
+            "estado": "Finalizado"
         }
     ]
 }
