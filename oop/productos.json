@@ -22,5 +22,17 @@
         "Descripcion": "Prueba de producto 4",
         "Precio": 100,
         "Cantidad": 100
+    },
+    {
+        "SKU": "002",
+        "Descripcion": "Prueba de Producto 2",
+        "Precio": 10,
+        "Cantidad": 100
+    },
+    {
+        "SKU": "003",
+        "Descripcion": "Prueba de producto 4",
+        "Precio": 100,
+        "Cantidad": 100
     }
 ]
